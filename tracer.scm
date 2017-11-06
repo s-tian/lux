@@ -29,8 +29,8 @@
 
 (define (draw)
   (pixelsize 5) 
-  (define width 20)
-  (define height 20)
+  (define width 200)
+  (define height 200)
 
   ;; Do sphere initialization here
   (define spheres ())
@@ -40,7 +40,7 @@
   (define spheres (cons (sphere (vec3 10001 0 0) 10000 (vec3 0.75 0.25 0.25) 'diffuse) spheres))
   (define spheres (cons (sphere (vec3 -10001 0 0) 10000 (vec3 0.25 0.75 0.25) 'diffuse) spheres))
   (define spheres (cons (sphere (vec3 -0.4 -0.6 0) 0.4 (vec3 1 1 1) 'mirror) spheres))
-  (define spheres (cons (sphere (vec3 0.4 -0.6 -0.2) 0.3 (vec3 1 1 1) 'diffuse) spheres))
+  (define spheres (cons (sphere (vec3 0.4 -0.6 -0.2) 0.3 (vec3 1 1 1) 'glass) spheres))
   (define spheres (cons (sphere (vec3 0 10.98 0) 10 (vec3 5 5 5) 'emitter) spheres))
 
   ;; light position, camera position
@@ -52,7 +52,7 @@
   (define xtan 0.5773502692) ;; hardcoded for 60 degrees
   (define ytan (* xtan ratio))
 
-  (define num-samples 4) 
+  (define num-samples 5) 
   (define max-pos (- (* width height) 1))
 
   ;; xtan, ytan
