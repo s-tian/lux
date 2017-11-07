@@ -21,16 +21,18 @@
 )
 
 (define (color-adj color) ;; Color gamma correction and coercion into turtle rgb
-  (rgb (expt (min (vec-x color) 1) 0.5)
-       (expt (min (vec-y color) 1) 0.5)
-       (expt (min (vec-z color) 1) 0.5)
+  (rgb (quotient (* (expt (min (vec-x color) 1) 0.5) 255) 1) ;; Browser takes in from 0 - 255
+       (quotient (* (expt (min (vec-y color) 1) 0.5) 255) 1) ;; Python interpreter takes 0 - 1
+       (quotient (* (expt (min (vec-z color) 1) 0.5) 255) 1)
   )
 )
 
 (define (draw)
+  (ht) ;; Hide turtle if not running in browser
+  (seth 180) ;; Draw from top down
   (pixelsize 5) 
-  (define width 20)
-  (define height 20)
+  (define width 300) ;; Output resolution
+  (define height 300)
 
   ;; Do sphere initialization here
   (define spheres ())
@@ -40,7 +42,7 @@
   (define spheres (cons (sphere (vec3 10001 0 0) 10000 (vec3 0.75 0.25 0.25) 'diffuse) spheres))
   (define spheres (cons (sphere (vec3 -10001 0 0) 10000 (vec3 0.25 0.75 0.25) 'diffuse) spheres))
   (define spheres (cons (sphere (vec3 -0.4 -0.6 0) 0.4 (vec3 1 1 1) 'mirror) spheres))
-  (define spheres (cons (sphere (vec3 0.4 -0.6 -0.2) 0.3 (vec3 1 1 1) 'diffuse) spheres))
+  (define spheres (cons (sphere (vec3 0.4 -0.6 -0.2) 0.3 (vec3 1 1 1) 'glass) spheres))
   (define spheres (cons (sphere (vec3 0 10.98 0) 10 (vec3 5 5 5) 'emitter) spheres))
 
   ;; light position, camera position
@@ -52,7 +54,7 @@
   (define xtan 0.5773502692) ;; hardcoded for 60 degrees
   (define ytan (* xtan ratio))
 
-  (define num-samples 4) 
+  (define num-samples 6) 
   (define max-pos (- (* width height) 1))
 
   ;; xtan, ytan
@@ -80,7 +82,16 @@
     (define sampled (vec-mul (sample 0 (vec3 0 0 0)) (/ 1 num-samples)))
     (display sampled)
 
-    (pixel (+ x 1) (- height y) (color-adj sampled)) ;; Draw the pixel
+    (color (color-adj sampled)) ;; Set pixel color
+    (if (= y 0) ;; Move turtle accordingly
+      (begin
+        (pu)
+        (goto x 0)
+        (pd)
+      )
+      ()
+    )
+    (fd 1)
 
     (if (> (+ 1 pos) max-pos)
         0
