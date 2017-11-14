@@ -2,8 +2,8 @@
 
 (define (random-generator seed)
   (define (rng)
-    (set! seed (modulo (+ (* 1103515245 seed) 12345) 2147483648))
-    (/ seed 2147483648)
+    (set! seed (modulo (+ (* 16807 seed) 0) 2147483647))
+    (/ seed 2147483647)
   )
   rng
 )

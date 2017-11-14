@@ -31,30 +31,30 @@
   (ht) ;; Hide turtle if not running in browser
   (seth 180) ;; Draw from top down
   (pixelsize 5) 
-  (define width 300) ;; Output resolution
-  (define height 300)
+  (define width 100) ;; Output resolution
+  (define height 100)
 
   ;; Do sphere initialization here
   (define spheres ())
-  (define spheres (cons (sphere (vec3 0 0 10001) 10000 (vec3 0.9 0.9 0.9) 'diffuse) spheres))
-  (define spheres (cons (sphere (vec3 0 10001 0) 10000 (vec3 0.9 0.9 0.9) 'diffuse) spheres))
-  (define spheres (cons (sphere (vec3 0 -10001 0) 10000 (vec3 0.9 0.9 0.9) 'diffuse) spheres))
-  (define spheres (cons (sphere (vec3 10001 0 0) 10000 (vec3 0.75 0.25 0.25) 'diffuse) spheres))
-  (define spheres (cons (sphere (vec3 -10001 0 0) 10000 (vec3 0.25 0.75 0.25) 'diffuse) spheres))
-  (define spheres (cons (sphere (vec3 -0.4 -0.6 0) 0.4 (vec3 1 1 1) 'mirror) spheres))
-  (define spheres (cons (sphere (vec3 0.4 -0.6 -0.2) 0.3 (vec3 1 1 1) 'glass) spheres))
-  (define spheres (cons (sphere (vec3 0 10.98 0) 10 (vec3 5 5 5) 'emitter) spheres))
+  (define spheres (cons (sphere (vec3 0 0 10000) 9900 (vec3 0.75 0.75 0.75) 'diffuse) spheres))
+  (define spheres (cons (sphere (vec3 0 10000 0) 9900 (vec3 0.75 0.75 0.75) 'diffuse) spheres))
+  (define spheres (cons (sphere (vec3 0 -10000 0) 9900 (vec3 0.75 0.75 0.75) 'diffuse) spheres))
+  (define spheres (cons (sphere (vec3 10000 0 0) 9885 (vec3 0.75 0.25 0.25) 'diffuse) spheres))
+  (define spheres (cons (sphere (vec3 -10000 0 0) 9885 (vec3 0.25 0.75 0.25) 'diffuse) spheres))
+  (define spheres (cons (sphere (vec3 -55 -60 20) 40 (vec3 1 1 1) 'mirror) spheres))
+  (define spheres (cons (sphere (vec3 55 -60 -20) 40 (vec3 1 1 1) 'glass) spheres))
+  (define spheres (cons (sphere (vec3 0 1099.2 -20) 1000 (vec3 10 10 10) 'emitter) spheres))
 
   ;; light position, camera position
 
-  (define cam-pos (vec3 0 0 -5))
-  (define fov 60) ;; width angle
+  (define cam-pos (vec3 0 0 -440))
+  (define fov 35) ;; width angle
   (define fov (* fov (/ 3.14159265 180))) ;; convert to rad
   (define ratio (/ height width))
-  (define xtan 0.5773502692) ;; hardcoded for 60 degrees
+  (define xtan 0.315298789) ;; hardcoded for 35/2 degrees
   (define ytan (* xtan ratio))
 
-  (define num-samples 6) 
+  (define num-samples 4) 
   (define max-pos (- (* width height) 1))
 
   ;; xtan, ytan
