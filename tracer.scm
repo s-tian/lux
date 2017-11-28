@@ -21,40 +21,40 @@
 )
 
 (define (color-adj color) ;; Color gamma correction and coercion into turtle rgb
-  (rgb (quotient (* (expt (min (vec-x color) 1) 0.5) 255) 1) ;; Browser takes in from 0 - 255
-       (quotient (* (expt (min (vec-y color) 1) 0.5) 255) 1) ;; Python interpreter takes 0 - 1
-       (quotient (* (expt (min (vec-z color) 1) 0.5) 255) 1)
+  (rgb (expt (min (vec-x color) 1) 0.5) ;; Browser takes in from 0 - 255
+       (expt (min (vec-y color) 1) 0.5) ;; Python interpreter takes 0 - 1
+       (expt (min (vec-z color) 1) 0.5)
   )
 )
 
 (define (draw)
   (ht) ;; Hide turtle if not running in browser
   (seth 180) ;; Draw from top down
-  (pixelsize 5) 
   (define width 100) ;; Output resolution
   (define height 100)
 
   ;; Do sphere initialization here
   (define spheres ())
-  (define spheres (cons (sphere (vec3 0 0 10000) 9900 (vec3 0.75 0.75 0.75) 'diffuse) spheres))
-  (define spheres (cons (sphere (vec3 0 10000 0) 9900 (vec3 0.75 0.75 0.75) 'diffuse) spheres))
-  (define spheres (cons (sphere (vec3 0 -10000 0) 9900 (vec3 0.75 0.75 0.75) 'diffuse) spheres))
-  (define spheres (cons (sphere (vec3 10000 0 0) 9885 (vec3 0.75 0.25 0.25) 'diffuse) spheres))
-  (define spheres (cons (sphere (vec3 -10000 0 0) 9885 (vec3 0.25 0.75 0.25) 'diffuse) spheres))
-  (define spheres (cons (sphere (vec3 -55 -60 20) 40 (vec3 1 1 1) 'mirror) spheres))
-  (define spheres (cons (sphere (vec3 55 -60 -20) 40 (vec3 1 1 1) 'glass) spheres))
+  (define spheres (cons (sphere (vec3 0 0 10000) 9900 (vec3 0.9 0.9 0.9) 'diffuse) spheres))
+  (define spheres (cons (sphere (vec3 0 10000 0) 9900 (vec3 0.9 0.9 0.9) 'diffuse) spheres))
+  (define spheres (cons (sphere (vec3 0 -10000 0) 9900 (vec3 0.9 0.9 0.9) 'diffuse) spheres))
+  (define spheres (cons (sphere (vec3 10000 0 0) 9885 (vec3 0.984 0.504 0.007) 'diffuse) spheres))
+  (define spheres (cons (sphere (vec3 -10000 0 0) 9885 (vec3 0 0.02 0.147) 'diffuse) spheres))
+  (define spheres (cons (sphere (vec3 -45 -50 20) 50 (vec3 1 1 1) 'mirror) spheres))
+  (define spheres (cons (sphere (vec3 50 -50 -20) 40 (vec3 1 1 1) 'glass) spheres))
+  (define spheres (cons (sphere (vec3 -15 -80 -60) 20 (vec3 0.053 0.244 0.398) 'diffuse) spheres))
   (define spheres (cons (sphere (vec3 0 1099.2 -20) 1000 (vec3 10 10 10) 'emitter) spheres))
 
   ;; light position, camera position
 
   (define cam-pos (vec3 0 0 -440))
-  (define fov 35) ;; width angle
+  (define fov 60) ;; width angle
   (define fov (* fov (/ 3.14159265 180))) ;; convert to rad
   (define ratio (/ height width))
-  (define xtan 0.315298789) ;; hardcoded for 35/2 degrees
+  (define xtan 0.577350269) 
   (define ytan (* xtan ratio))
 
-  (define num-samples 4) 
+  (define num-samples 5) 
   (define max-pos (- (* width height) 1))
 
   ;; xtan, ytan

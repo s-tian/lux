@@ -24,3 +24,8 @@ Here is a 300x300 image at 4 samples/pixel:
   <img src="doc/images/300x300-4spp-crop.png" alt="300x300 Cornell box" width="300px"/>
 </p>
 
+Finally, with adjusted colors, scene arrangement, and an additional diffuse surface, our 500x500 image at 500 samples/pixel:
+<p align="center">
+  <img src="doc/images/500x500.png" alt="500x500 Cornell box" width="500px"/>
+</p>
+

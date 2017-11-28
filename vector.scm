@@ -1,14 +1,3 @@
-
-;; sin and cos using Taylor series approximation
-
-(define (sin x)
-  (+ x (- (/ (expt x 3) 6)) (/ (expt x 5) 120) (- (/ (expt x 7) 5040)))
-)
-
-(define (cos x)
-  (+ 1 (- (/ (expt x 2) 2)) (/ (expt x 4) 24) (- (/ (expt x 6) 720)) (/ (expt x 8) 40320))
-)
-
 ;; Make vector abstraction 
 
 (define (vec3 x y z)
