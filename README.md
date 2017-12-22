@@ -1,6 +1,8 @@
 # lux
 
-Lux is a work in progress tail-recursive raytracer written in Scheme. It is able to model diffuse, mirror, and glass spheres. It is partially based off of [smallpt](http://www.kevinbeason.com/smallpt/) and uses techniques from the book *Ray Tracing in One Weekend*.
+Lux is a work in progress tail-recursive raytracer written in Scheme. It is able to model diffuse, mirror, and glass spheres. It is partially based off of [smallpt](http://www.kevinbeason.com/smallpt/) and uses techniques from the book *Ray Tracing in One Weekend*. 
+
+The 500x500 render below won 1st place in the heavyweight division of the [Fall 2017 CS61A Scheme Art Contest at UC Berkeley](https://inst.eecs.berkeley.edu/~cs61a/fa17/proj/scheme_gallery/). This project uses the CS61A implementation of Turtle graphics. 
 
 We started with a naive ray tracing implementation. Running the initial version of the program through a Python3 scheme interpreter, we rendered a 20x20 image of the Cornell box using 4 samples/pixel in around five minutes:
 
@@ -28,4 +30,3 @@ Finally, with adjusted colors, scene arrangement, and an additional diffuse surf
 <p align="center">
   <img src="doc/images/500x500.png" alt="500x500 Cornell box" width="500px"/>
 </p>
-
